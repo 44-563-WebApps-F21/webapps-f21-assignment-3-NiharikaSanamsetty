@@ -75,6 +75,38 @@
     <td>3$</td>
 </tr>
 </table>
+<hr>
+<h2>Graph traversal/connected/shortest path</h2>
+<blockquote>
+    Graph traversal is a technique used for a searching vertex in a graph. The graph traversal is also used to decide the order of vertices is visited in the search process. A graph traversal finds the edges to be used in the search process without creating loops. That means using graph traversal we visit all the vertices of the graph without getting into looping path.
+</blockquote>
+<a href="https://cp-algorithms.com/graph/breadth-first-search.html">SourceCode</a> <br>
+<pre>
+    vector<vector<int>> adj;  // adjacency list representation
+        int n; // number of nodes
+        int s; // source vertex
+        
+        queue<int> q;
+        vector<bool> used(n);
+        vector<int> d(n), p(n);
+        
+        q.push(s);
+        used[s] = true;
+        p[s] = -1;
+        while (!q.empty()) {
+            int v = q.front();
+            q.pop();
+            for (int u : adj[v]) {
+                if (!used[u]) {
+                    used[u] = true;
+                    q.push(u);
+                    d[u] = d[v] + 1;
+                    p[u] = v;
+                }
+            }
+        }
+</pre>
+
     </body>
 </html>
 
